@@ -11,13 +11,13 @@ public class Main {
     }
 
     public static void task1(List<Integer> nums){
-        System.out.print("Чётные числа: ");
-        printEven(nums);
+        System.out.print("Нечетные числа: ");
+        printOdd(nums);
     }
 
     public static void task2(List<Integer> nums){
-        System.out.print("Нечетные числа: ");
-        printOdd(nums);
+        System.out.print("Чётные числа: ");
+        printEven(nums);
     }
 
     public static void task3(List<String> strings){
@@ -35,7 +35,7 @@ public class Main {
             System.out.println();
             return;
         }
-        Set<String> integers = new TreeSet<>(strings);
+        Set<String> integers = new HashSet<>(strings);
         integers.forEach(integer -> System.out.print(integer + " "));
         System.out.println();
     }
@@ -56,6 +56,19 @@ public class Main {
         map.forEach((s, integer) -> System.out.println(s + ": " + integer));
     }
 
+    private static void printOdd(List<Integer> nums) {
+        if(nums == null) {
+            System.out.println();
+            return;
+        }
+        for (Integer num : nums) {
+            if(num % 2 != 0) {
+                System.out.print(num + " ");
+            }
+        }
+        System.out.println();
+    }
+
     private static void printEven(List<Integer> nums) {
         if(nums == null) {
             System.out.println();
@@ -64,18 +77,6 @@ public class Main {
         Set<Integer> integers = new TreeSet<>(nums);
         integers.stream()
                 .filter(integer -> integer % 2 == 0)
-                .forEach(integer -> System.out.print(integer + " "));
-        System.out.println();
-    }
-
-    private static void printOdd(List<Integer> nums) {
-        if(nums == null) {
-            System.out.println();
-            return;
-        }
-        Set<Integer> integers = new TreeSet<>(nums);
-        integers.stream()
-                .filter(integer -> integer % 2 != 0)
                 .forEach(integer -> System.out.print(integer + " "));
         System.out.println();
     }
